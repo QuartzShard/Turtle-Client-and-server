@@ -26,16 +26,12 @@ class MainApplication(tk.Frame):
     def sendToServer(self, program, name, address):
         if program[-3:] != '.py':
             program = program + '.py'
-        with open(program, "r") as pyFile: 
+        with open('Client\%s' % program, "r") as pyFile: 
             programConts = pyFile.read()
-        toJson = [name, programConts]
+        toJson = [[name, programConts]]
         connectionObj = ft(address)
         connectionObj.login()
-        JSONObj = []
-        connectionObj.retrbinary('RETR Funcs.json', JSONObj.append)
-        PyObj = js.loads(JSONObj[0])
-        PyObj.append(toJson)
-        toSend = js.dumps(PyObj)
+        toSend = js.dumps(toJson)
         connectionObj.storbinary('STOR %s.json' % name, io.BytesIO(toSend.encode('utf-8')))
         
 
