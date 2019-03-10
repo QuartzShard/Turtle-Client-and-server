@@ -2,26 +2,34 @@
 import  json
 from tkinter import *
 
-def deserialiser(filePath):
-    con = open(filePath, "r")
-    li = json.loads(con.read())
-    con.close()
-    return li
+class Mainapplication(Frame):
+    def __init__(self, parent, *args, **kwargs):
+        Frame.__init__(self, parent, *args, **kwargs)
+        
 
-def runFunctionFromString(funcString):
-    exec(funcString)
-    return
+    def deserialiser(filePath):
+        con = open(filePath, "r")
+        li = json.loads(con.read())
+        con.close()
+        return li
 
-fullList = deserialiser("Funcs.json")
+    def runFunctionFromString(funcString):
+        exec(funcString)
+        return
 
-root = Tk()
-buttons = []
-for i in range(len(fullList)):
-    add = Button(text=fullList[i][0], command=lambda i=i :runFunctionFromString(fullList[i][1]))
-    buttons.append(add)
-    buttons[i].pack()
+    def addbuttons(self):
+        funcList = self.deserialiser("Funcs.json")
+        buttons = []
+        for i in range(len(funcList)):
+            add = Button(text=funcList[i][0], command=lambda i=i :self.runFunctionFromString(funcList[i][1]))
+            buttons.append(add)
+            buttons[i].pack()
 
-root.mainloop()
 
-
+if __name__ == "__main__":
+    root = Tk()
+    Mainapplication(root).pack(fill="both", expand=True)
+    Mainapplication.addbuttons(Mainapplication)
+    root.title("Server")
+    root.mainloop()
 
