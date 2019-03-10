@@ -36,7 +36,7 @@ class MainApplication(tk.Frame):
         PyObj = js.loads(JSONObj[0])
         PyObj.append(toJson)
         toSend = js.dumps(PyObj)
-        connectionObj.storbinary('STOR Funcs.json', io.BytesIO(toSend.encode('utf-8')))
+        connectionObj.storbinary('STOR %s.json' % name, io.BytesIO(toSend.encode('utf-8')))
         
 
 if __name__ == "__main__":
