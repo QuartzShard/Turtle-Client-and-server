@@ -15,9 +15,11 @@ def runFunctionFromString(funcString):
 fullList = deserialiser("Funcs.json")
 
 root = Tk()
-
-for i in fullList:
-    Button(text=i[0], command=lambda:runFunctionFromString(i[1]) ).pack()
+buttons = []
+for i in range(len(fullList)):
+    add = Button(text=fullList[i][0], command=lambda i=i :runFunctionFromString(fullList[i][1]))
+    buttons.append(add)
+    buttons[i].pack()
 
 root.mainloop()
 
