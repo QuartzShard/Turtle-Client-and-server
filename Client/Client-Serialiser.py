@@ -26,7 +26,7 @@ class MainApplication(tk.Frame):
     def sendToServer(self, program, name, address):
         if program[-3:] != '.py':
             program = program + '.py'
-        with open('Client\%s' % program, "r") as pyFile: 
+        with open('%s' % program, "r") as pyFile: 
             programConts = pyFile.read()
         toJson = [[name, programConts]]
         connectionObj = ft(address)

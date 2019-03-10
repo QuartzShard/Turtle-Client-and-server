@@ -23,7 +23,7 @@ class Mainapplication(Frame):
     def addbuttons(self):
         for widget in self.winfo_children(root):
             widget.destroy()
-        funcList = self.deserialiser("Server\Data\Funcs.json")
+        funcList = self.deserialiser("Data\Funcs.json")
         buttons = []
         for i in range(len(funcList)):
             add = Button(text=funcList[i][0], command=lambda i=i :self.runFunctionFromString(funcList[i][1]))

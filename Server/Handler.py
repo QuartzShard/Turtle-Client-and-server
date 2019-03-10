@@ -2,13 +2,13 @@ import json as js
 import os
 def collect():
     files = []
-    with open("Server\Data\Funcs.json", 'r+') as file:
+    with open("Data\Funcs.json", 'r+') as file:
         parentList = js.load(file)
-        for filename in os.listdir('Server\Data'):
+        for filename in os.listdir('Data'):
             if filename != 'Funcs.json':
-                with open('Server\Data\%s' % filename, 'r') as tempfile:
+                with open('Data\%s' % filename, 'r') as tempfile:
                     files.append(js.load(tempfile))
-                os.remove('Server\Data\%s' % filename)
+                os.remove('Data\%s' % filename)
         modList = parentList
         for i in range(len(files)):
             modList = modList + files[i]
