@@ -1,3 +1,4 @@
+
 import  json
 from tkinter import *
 
@@ -19,5 +20,6 @@ for i in fullList:
     Button(text=i[0], command=lambda:runFunctionFromString(i[1]) ).pack()
 
 root.mainloop()
+
 
 
