@@ -30,7 +30,8 @@ class Mainapplication(Frame):
             add = Button(text=funcList[i][0], command=lambda i=i :self.runFunctionFromString(funcList[i][1]))
             buttons.append(add)
             buttons[i].pack()
-        refresh = Button(text='refresh', command=lambda:self.addbuttons(self)).pack()
+        refreshComs = Button(text='Refresh List', command=lambda:self.addbuttons(self)).pack()
+        refreshScreen = Button(text='Refresh Screen', command=turtle.reset).pack()
         
 
 
