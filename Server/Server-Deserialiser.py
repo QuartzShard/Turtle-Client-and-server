@@ -11,6 +11,7 @@ class Mainapplication(Frame):
 
     def deserialiser(filePath):
         fix.collect()
+        fix.prune()
         con = open(filePath, "r")
         li = json.loads(con.read())
         con.close()
